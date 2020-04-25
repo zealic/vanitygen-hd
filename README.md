@@ -9,7 +9,7 @@ Generate Bitcoin vanity address for Hierarchical Deterministic Wallet and Multis
 Using Docker to run:
 
 ```shell
-docker run -it --rm zealic/vanitygen-hd generate HDD BTC 999 666
+docker run -it --rm --network=none zealic/vanitygen-hd generate HDD BTC 999 666
 ```
 
 You will got below vanity address with prefix `HDD`:
@@ -33,11 +33,12 @@ Options:
 Commands:
   generate [options] [rule-list]
     Options:
-    -w, --workers <int>            Numeber of parallel worker, use 0 as CPU num (default: 0)
-    -s, --co-signers <json-file>   Co-signers JSON file, include public key
-    -m, --co-members <int>         Co-signers member num, use 0 as MAX(1,LEN(all_signers)) (default: 0)
-    -f, --rules-file <rules-file>  Rules file (default: "rules.txt")
-    -h, --help                     display help for command
+      -b, --bits <int>               BIP32 specifies the entropy length to be tween 128 and 256 bits and a multiple of 32 bits. (default: 256)
+      -w, --workers <int>            Numeber of parallel worker, use 0 as CPU num. (default: 0)
+      -s, --co-signers <json-file>   Co-signers JSON file, include m/45'/{1-n} public key array.
+      -m, --co-members <int>         Co-signers member num, use 0 as 'MAX(1,LEN(all_signers))'. (default: 0)
+      -f, --rules-file <rules-file>  One rule per line, allowing '#' to be a comment. (default: "rules.txt")
+      -h, --help                     display help for command
   help [command]                  display help for command
 ```
 

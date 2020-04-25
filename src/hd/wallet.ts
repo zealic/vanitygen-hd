@@ -17,6 +17,10 @@ export interface IHDWallet {
 
 export class HDWallet implements IHDWallet {
     static async make(bits: number = 256) {
+        if(!bits || bits < 128 || bits > 256 || (bits % 32) !== 0) {
+            bits = 256;
+        }
+
         let mnemonic = await bip39.generateMnemonic(bits)
         let wallet = await HDWallet.from(mnemonic);
         return wallet;
