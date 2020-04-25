@@ -1,3 +1,5 @@
+![CI](https://github.com/zealic/vanitygen-hd/workflows/CI/badge.svg)
+
 # vanitygen-hd
 
 Generate Bitcoin vanity address for Hierarchical Deterministic Wallet and Multisig Hierarchical Deterministic Wallet.
@@ -32,4 +34,14 @@ Commands:
 
 ## P2SH Address Limition
 
-Because base58 address encoding with `0x05` heading, the second character of the P2SH address cannot be `STUVWXYZ` and` a-z`.
+Because base58 address encoding with `0x05` heading, the second character of the P2SH address cannot be `STUVWXYZ` and `a-z`.
+
+## Donate
+
+Bitcoin: 18mXNJyHdUSKfvQSrXCdQsuStp6eWFUVnh
+
+![Donate Bitcoin](./donate.png)
+
+## LICENSE
+
+MIT
