@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./src",
+        "target": "ES2018",
+        "module":"CommonJS",
+        "moduleResolution": "node",
+        "noImplicitAny": true,
+        "sourceMap": true,
+        "outDir": ".target"
+    },
+    "exclude": [
+        "test/**/*"
+    ]
+}

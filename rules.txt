@@ -1,0 +1,62 @@
+# X
+111X
+222X
+333X
+444X
+555X
+666X
+777X
+888X
+999X
+
+# Y
+111Y
+222Y
+333Y
+444Y
+555Y
+666Y
+777Y
+888Y
+999Y
+
+# Z
+111Z
+222Z
+333Z
+444Z
+555Z
+666Z
+777Z
+888Z
+999Z
+
+# Words
+Bitcoin
+Satoshi
+Ethereum
+Pornhub
+Github
+Matrix
+Microsoft
+Linux
+Windows
+
+# Abbr
+AEX
+ARP
+BTC
+DEV
+GEN
+TNT
+MVP
+VIP
+MMP
+ZEN
+KKK
+XXX
+YYY
+ZZZ
+
+# ASCII
+QaQ
