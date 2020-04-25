@@ -1,4 +1,4 @@
-![CI](https://github.com/zealic/vanitygen-hd/workflows/CI/badge.svg)
+[![CI][ci-image]](ci-url)
 
 # vanitygen-hd
 
@@ -38,10 +38,24 @@ Because base58 address encoding with `0x05` heading, the second character of the
 
 ## Donate
 
-Bitcoin: 18mXNJyHdUSKfvQSrXCdQsuStp6eWFUVnh
+Bitcoin: [`18mXNJyHdUSKfvQSrXCdQsuStp6eWFUVnh`][donate-url]
 
-![Donate Bitcoin](./donate.png)
+[![Donate Bitcoin][donate-image]][donate-url]
 
-## LICENSE
+## License
 
-MIT
+[MIT](./LICENSE)
+
+## References
+
+* [bitcoinjs-lib](https://github.com/bitcoinjs/bitcoinjs-lib)
+* [BIP-32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki)
+* [BIP-39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki)
+* [BIP-44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki)
+* [BIP-45](https://github.com/bitcoin/bips/blob/master/bip-0045.mediawiki)
+* [BIP-39 Tool : Mnemonic Code Converter](https://github.com/iancoleman/bip39)
+
+[ci-image]:       https://github.com/zealic/vanitygen-hd/workflows/CI/badge.svg
+[ci-url]:         https://github.com/zealic/vanitygen-hd/actions?query=workflow%3ACI
+[donate-image]:   ./donate.png
+[donate-url]:     https://www.blockchain.com/btc/address/18mXNJyHdUSKfvQSrXCdQsuStp6eWFUVnh
