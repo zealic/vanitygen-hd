@@ -9,7 +9,6 @@ RUN npm install
 COPY . /build
 RUN ./node_modules/typescript/bin/tsc
 RUN cd .target && npm install --production
-RUN cp rules.txt /build/.target
 
 
 #==============================================================================
@@ -19,4 +18,4 @@ FROM node:lts-alpine
 COPY --from=source /build/.target /app
 WORKDIR /app
 ENTRYPOINT ["node", "vanitygen-hd.js"]
-CMD ["generate"]
+CMD ["help"]

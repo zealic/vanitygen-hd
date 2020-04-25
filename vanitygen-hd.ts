@@ -11,7 +11,7 @@ function initializeProgram() {
     program.version("0.1.0");
     program.command("generate")
         .option("-w, --workers <int>", "Numeber of parallel worker, use 0 as CPU num", parseInt, 0)
-        .option("-s, --co-signers <json-file>", "Co-signers JSON file, include public key")
+        .option("-s, --co-signers <json-file>", "Co-signers JSON file, include m/45'/{1-n} public key array")
         .option("-m, --co-members <int>", "Co-signers member num, use 0 as MAX(1,LEN(all_signers))", parseInt, 0)
         .option("-f, --rules-file <rules-file>", "Rules file", "rules.txt")
         .arguments("[rule-list]")
@@ -57,7 +57,7 @@ async function parallelRun(generator: HD.HDWalletGenerator, matcher: HD.HDWallet
             cluster.fork();
         }
         cluster.on("message", (_, msg) => {
-            console.log(yaml.dump(msg, { lineWidth: -1 }));
+            console.log(yaml.dump([msg], { lineWidth: -1 }));
         })
     } else {
         let matchedGenerator = createGenerator(generator, matcher);

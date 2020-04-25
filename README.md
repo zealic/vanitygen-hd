@@ -9,10 +9,19 @@ Generate Bitcoin vanity address for Hierarchical Deterministic Wallet and Multis
 Using Docker to run:
 
 ```shell
-docker run -it --rm zealic/vanitygen-hd
+docker run -it --rm zealic/vanitygen-hd generate HDD BTC 999 666
 ```
 
-CLI Usage:
+You will got below vanity address with prefix `HDD`:
+
+```yaml
+- address: 1HDDGgRFrtY38ZVVTtkgbBS4aUwE2rwUhz
+  mnemonic: behave crack outer fine rude dwarf verb prosper because split loyal blue cream jar merge cupboard prize normal subway celery unfold alarm blue fetch
+```
+
+According to your CPU frequency and vanity address requirements, the time to generate mnemonic will gradually become longer. Generally, 3~4 length addresses are recommended.
+
+## Usage
 
 ```text
 Usage: vanitygen-hd [options] [command]
@@ -48,6 +57,8 @@ Bitcoin: [`18mXNJyHdUSKfvQSrXCdQsuStp6eWFUVnh`][donate-url]
 
 ## References
 
+* [vanitygen](https://github.com/samr7/vanitygen)
+* [vanitygen-plus](https://github.com/exploitagency/vanitygen-plus)
 * [bitcoinjs-lib](https://github.com/bitcoinjs/bitcoinjs-lib)
 * [BIP-32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki)
 * [BIP-39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki)
