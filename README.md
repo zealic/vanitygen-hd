@@ -71,7 +71,7 @@ Commands:
       -b, --bits <int>               BIP32 specifies the entropy length to be tween 128 and 256 bits and a multiple of 32 bits. (default: 256)
       -w, --workers <int>            Numeber of parallel worker, use 0 as CPU num. (default: 0)
       -s, --co-signers <yaml-file>   Co-signers YAML file, include m/45'/{1-n} public key array.
-      -m, --co-members <int>         Co-signers member num, use 0 as 'MAX(1,LEN(all_signers))'. (default: 0)
+      -m, --co-members <int>         Co-signers member num, use 0 as 'MAX(1,LEN(co_signers))'. (default: 0)
       -f, --rules-file <rules-file>  One rule per line, allowing '#' to be a comment. (default: "rules.txt")
       -h, --help                     display help for command
   help [command]                  display help for command

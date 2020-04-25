@@ -15,7 +15,7 @@ function initializeProgram() {
         .option("-b, --bits <int>", "BIP32 specifies the entropy length to be tween 128 and 256 bits and a multiple of 32 bits.", Number, 256)
         .option("-w, --workers <int>", "Numeber of parallel worker, use 0 as CPU num.", parseInt, 0)
         .option("-s, --co-signers <yaml-file>", "Co-signers YAML file, include m/45'/{1-n} public key array.")
-        .option("-m, --co-members <int>", "Co-signers member num, use 0 as 'MAX(1,LEN(all_signers))'.", parseInt, 0)
+        .option("-m, --co-members <int>", "Co-signers member num, use 0 as 'MAX(1,LEN(co_signers))'.", parseInt, 0)
         .option("-f, --rules-file <rules-file>", "One rule per line, allowing '#' to be a comment.", "rules.txt")
         .arguments("[rule-list]")
         .action(function (_, cmd: Command) {
