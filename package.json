@@ -24,7 +24,7 @@
   },
   "scripts": {
     "start": "make",
-    "test": "jest"
+    "test": "node ./node_modules/jest/bin/jest.js"
   },
   "author": "",
   "license": "ISC"
