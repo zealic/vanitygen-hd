@@ -1,8 +1,8 @@
-[![CI][ci-image]](ci-url)
+[![CI][ci-image]][ci-url]
 
 # vanitygen-hd
 
-Generate Bitcoin vanity address for Hierarchical Deterministic Wallet and Multisig Hierarchical Deterministic Wallet.  
+Generate Bitcoin vanity address for Hierarchical Deterministic Wallet and Hierarchical Deterministic Multisig Wallet.  
 
 ## Quickstart
 
@@ -27,8 +27,8 @@ According to your CPU frequency and vanity address requirements, the time to gen
 
 ### HDM Wallet
 
-If you want generate Multisig Hierarchical Deterministic Wallet, use `--co-signers` and `--co-members`.  
-Multisig Hierarchical Deterministic Wallet generated vanity address path is `m/45'/<CO_SIGNER_INDEX>/0/0`.
+If you want generate Hierarchical Deterministic Multisig Wallet, use `--co-signers` and `--co-members`.  
+Generated vanity address path is `m/45'/<CO_SIGNER_INDEX>/0/0`.
 
 Prepare co-signers public keys file **co-signers.yml**:
 
@@ -101,6 +101,7 @@ Bitcoin: [`18mXNJyHdUSKfvQSrXCdQsuStp6eWFUVnh`][donate-url]
 * [BIP-44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki)
 * [BIP-45](https://github.com/bitcoin/bips/blob/master/bip-0045.mediawiki)
 * [BIP-39 Tool : Mnemonic Code Converter](https://github.com/iancoleman/bip39)
+* [P2PKH Graphical Address Generator](http://royalforkblog.github.io/2014/08/11/graphical-address-generator/)
 
 [ci-image]:       https://github.com/zealic/vanitygen-hd/workflows/CI/badge.svg
 [ci-url]:         https://github.com/zealic/vanitygen-hd/actions?query=workflow%3ACI
