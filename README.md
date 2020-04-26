@@ -8,7 +8,7 @@ Generate Bitcoin vanity address for Hierarchical Deterministic Wallet and Hierar
 
 ### HD Wallet
 
-Hierarchical Deterministic Wallet generated vanity address path is `m/44'/0'/0'/0/0`.
+HD Wallet generated vanity address path is `m/44'/0'/0'/0/0`.
 
 Using Docker to run:
 
@@ -27,7 +27,7 @@ According to your CPU frequency and vanity address requirements, the time to gen
 
 ### HDM Wallet
 
-If you want generate Hierarchical Deterministic Multisig Wallet, use `--co-signers` and `--co-members`.  
+If you want generate HDM Wallet, use `--co-signers` and `--co-members`.  
 Generated vanity address path is `m/45'/<CO_SIGNER_INDEX>/0/0`.
 
 Prepare co-signers public keys file **co-signers.yml**:
