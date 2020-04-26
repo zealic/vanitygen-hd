@@ -30,7 +30,3 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: ${{ github.repository }}
         tag_with_ref: true
-    - name: run
-      run: |
-        docker info
-        docker run -t --rm ${{ github.repository_owner }}/sandbox uname -a
