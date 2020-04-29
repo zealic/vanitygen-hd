@@ -71,10 +71,12 @@ export class HDMWallet implements IHDWallet {
     private cosigners: bip32.BIP32Interface[];
     private _firstMAddress: string;
     private _coMembers: number;
+    private _lastSigner: boolean;
 
-    constructor(wallet: IHDWallet, cosigners: bip32.BIP32Interface[], coMembers: number = null) {
+    constructor(wallet: IHDWallet, cosigners: bip32.BIP32Interface[], coMembers: number = null, lastSigner: boolean = false) {
         this.wallet = wallet;
         this.cosigners = cosigners;
+        this._lastSigner = lastSigner;
         if(!coMembers || coMembers <= 0) {
             coMembers = Math.max(1, this.cosigners.length);
         }
@@ -105,8 +107,15 @@ export class HDMWallet implements IHDWallet {
 
     getAddress(path: string) {
         // Prepare siginers
-        let extKey = this.wallet.rootKey.derivePath(`m/45'/0`);
-        let signers = [extKey].concat(this.cosigners);
+        let signers: bitcoin.BIP32Interface[];
+        if(this._lastSigner) {
+            let solt = this.cosigners.length;
+            let extKey = this.wallet.rootKey.derivePath(`m/45'/${solt}`);;
+            signers = this.cosigners.concat([extKey]);
+        } else {
+            let extKey = this.wallet.rootKey.derivePath(`m/45'/0`);;
+            signers = [extKey].concat(this.cosigners);
+        }
 
         // Generate specify path public keys
         let keys = signers.map((signer, i) => {
