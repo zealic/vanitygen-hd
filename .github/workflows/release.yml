@@ -51,7 +51,10 @@ jobs:
         tag_name: ${{ github.ref }}
         release_name: Release ${{ github.ref }}
         body: |
+          Version: ${{ github.ref }}
+          ```text
           ${{ steps.release_description.outputs.description }}
+          ```
         draft: false
         prerelease: false
     - name: Upload Release Assets - Linux
