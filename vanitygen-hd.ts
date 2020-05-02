@@ -10,7 +10,7 @@ import { HD } from './src';
 
 function initializeProgram() {
     let program = new Command();
-    program.version("0.1.0");
+    program.version("0.2.0");
     program.command("generate")
         .option("-b, --bits <int>", "BIP32 specifies the entropy length to be tween 128 and 256 bits and a multiple of 32 bits.", Number, 256)
         .option("-w, --workers <int>", "Numeber of parallel worker, use 0 as CPU num.", parseInt, 0)

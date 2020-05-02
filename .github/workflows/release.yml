@@ -1,0 +1,109 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "[0-9]+.[0-9]+.[0-9]+"
+
+jobs:
+  tests:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        node-version: [12.x, 14.x]
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: npm install
+    - run: npm test
+  build-release:
+    runs-on: ubuntu-latest
+    needs: tests
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+    - name: Use Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    - run: npm install
+    - run: make package && make dist
+    - shell: bash
+      id: release_description
+      run: |
+        description=$(cat ./.dist/checksum.sha256)
+        echo $description
+        description="${description//'%'/'%25'}"
+        description="${description//$'\n'/'%0A'}"
+        description="${description//$'\r'/'%0D'}"
+        echo "::set-output name=description::$description"
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@latest
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        body: |
+          ${{ steps.release_description.outputs.description }}
+        draft: false
+        prerelease: false
+    - name: Upload Release Assets - Linux
+      id: upload-release-asset-linux
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./.dist/vanitygen-hd_linux-amd64.tar.gz
+        asset_name: vanitygen-hd_linux-amd64.tar.gz
+        asset_content_type: application/tar+gzip
+    - name: Upload Release Assets - Darwin
+      id: upload-release-asset-darwin
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./.dist/vanitygen-hd_darwin-amd64.tar.gz
+        asset_name: vanitygen-hd_darwin-amd64.tar.gz
+        asset_content_type: application/tar+gzip
+    - name: Upload Release Assets - Windows
+      id: upload-release-asset-windows
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./.dist/vanitygen-hd_windows-amd64.zip
+        asset_name: vanitygen-hd_windows-amd64.zip
+        asset_content_type: application/zip
+    - name: Upload Release Assets - Checksum
+      id: upload-release-asset-checksum
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./.dist/checksum.sha256
+        asset_name: checksum.sha256
+        asset_content_type: text/plain
+  docker-image:
+    needs: build-release
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+    - name: docker-build-push
+      uses: docker/build-push-action@v1
+      with:
+        username: ${{ github.repository_owner }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        repository: ${{ github.repository }}
+        tag_with_ref: true

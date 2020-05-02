@@ -18,9 +18,11 @@ package: clean
 	@tsc
 	@./node_modules/.bin/pkg -target=$(PACKAGE_TARGETS) --out-path=$(DIST_DIR) $(TARGET_DIR)/$(REPO_NAME).js
 	@(set -e; cd $(DIST_DIR); \
+		chmod +x $(REPO_NAME)-*; \
 		mv $(REPO_NAME)-linux $(REPO_NAME)_linux-amd64; \
 		mv $(REPO_NAME)-macos $(REPO_NAME)_darwin-amd64; \
 		mv $(REPO_NAME)-win.exe $(REPO_NAME)_windows-amd64.exe; \
+		sha256sum $(REPO_NAME)_* > checksum.sha256; \
 	)
 
 dist:
