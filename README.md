@@ -6,6 +6,8 @@ Generate Bitcoin vanity address for Hierarchical Deterministic Wallet and Hierar
 
 ## Quickstart
 
+You can use [CLI](https://github.com/zealic/vanitygen-hd/releases) or [Docker Image](https://hub.docker.com/r/zealic/vanitygen-hd) to run this program.
+
 ### HD Wallet
 
 HD Wallet generated vanity address path is `m/44'/0'/0'/0/0`.
@@ -13,6 +15,10 @@ HD Wallet generated vanity address path is `m/44'/0'/0'/0/0`.
 Using Docker to run:
 
 ```shell
+# CLI
+vanitygen-hd generate HDD BTC 999 666
+
+# Docker
 docker run -it --rm --network=none zealic/vanitygen-hd generate HDD BTC 999 666
 ```
 
@@ -42,6 +48,10 @@ Prepare co-signers public keys file **co-signers.yml**:
 Generate with HDM wallet
 
 ```shell
+# CLI
+vanitygen-hd generate --co-signers=/co-signers.yml HDD BTC 999 666
+
+# Docker
 docker run -it --rm --network=none \
   -v $PWD/co-signers.yml:/co-signers.yml \
   zealic/vanitygen-hd \
